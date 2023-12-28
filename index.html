@@ -15,41 +15,57 @@
 
     <div id="overall-container">
         <form id="gptForm">
-            <label for="language">Language:</label>
-            <textarea type="text-area" id="language" name="language" required></textarea>
+            <!-- <label for="language">Language:</label> -->
+            <p>Language</p>
+            <input type="text" id="language" name="language" required placeholder="HTML, Python, Java, C++, etc.">
 
-            <label for="code">Copy Code:</label>
-            <textarea type="text-area" id="code" name="code" required></textarea> 
+            <!-- <label for="code">Copy Code:</label> -->
+            <p>Copy Code</p>
+            <textarea type="text-area" id="code" name="code" required placeholder="print('Hello World')"></textarea> 
 
             <!-- <button id="submit-button" type="submit" onclick="submitForm()"> -->
             <button onclick="submitForm()">Submit</button>
         </form>
 
         <div id="responseContainer">
-            <h3>What your code means:</h3>
+            <h1>Code Explaination Below:</h1>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum repudiandae provident voluptatibus expedita voluptas distinctio harum vero atque eius, possimus nesciunt pariatur aliquam voluptate dolores excepturi voluptatum! Minima facilis, eveniet dolorum placeat dolor explicabo aperiam iure! Magni, fugit quam vel facilis corrupti accusantium atque ut nisi possimus laborum nulla odit ipsum tempora praesentium, ab totam minus sequi magnam neque quasi illum corporis at nostrum blanditiis. Natus deleniti ratione corrupti voluptate assumenda minima necessitatibus, consequatur dolorem! Quos quia vitae et reprehenderit nihil deleniti, optio laboriosam animi nam nisi nobis mollitia inventore commodi illo ut odio beatae, sed praesentium est aut quam fugit modi. Alias tempore doloremque cupiditate ratione expedita a architecto nisi voluptas, laborum, pariatur officia molestias neque nihil sit voluptatum optio in provident nemo? Et, expedita doloremque ab culpa aut amet tenetur atque voluptatem placeat corrupti voluptates obcaecati repellendus quaerat sed, asperiores delectus earum dicta harum neque eaque quisquam, consequuntur similique fugit! Facere, nemo doloribus? Quisquam inventore similique repellat voluptatibus non officia praesentium cumque minima, repudiandae libero facere? Dignissimos aspernatur suscipit sint aut possimus tempora iure magni non eos necessitatibus temporibus mollitia ratione, alias placeat voluptate. Aut nobis corporis modi sit quidem ipsum quia dolorem natus sequi? Recusandae, quas. Repudiandae!</p>
         </div>
     </div>
 
-    <script>
-        async function submitForm() {
-            const language = document.getElementById('language').value;
-            const code = document.getElementById('code').value;
+<script>
+    const responseContainer = document.getElementById('responseContainer');
+    // responseContainer.innerHTML = "hey there"
+    async function submitForm() {
+        const input1 = document.getElementById('language').value;
+        const input2 = document.getElementById('code').value;
 
-            const responseContainer = document.getElementById('responseContainer');
-            responseContainer.innerHTML = 'Loading...';
+        // responseContainer = document.getElementById('responseContainer');
+        responseContainer.innerHTML = 'Loading...';
 
+        try {
             const response = await fetch('/submit', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ language, code })
+                body: JSON.stringify({ input1, input2 })
             });
 
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
             const responseData = await response.text();
-            responseContainer.innerHTML = responseData;
+            responseContainer.innerHTML = String(responseData);
+            // return responseData;
+        } catch (error) {
+            console.error('Error:', error.message);
+            responseContainer.innerHTML = 'Error fetching data';
         }
-    </script>
+    }
+    responseContainer.innerHTML = responseData;
+</script>
 
 </body>
 

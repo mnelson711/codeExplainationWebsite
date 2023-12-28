@@ -5,46 +5,54 @@ body {
     /* display: flex; */
     align-items: center;
     justify-content: center;
-    background-color: #003459;
+    background-color: #DADADA;
     /* Light gray background color */
+    font-family: Tahoma, sans-serif;
 }
 
-#center-container {
-    text-align: center;
+#overall-container {
+    display: flex;
+    /* background-color: red; */
+    padding: 1%;
 }
 
 #top-title {
     text-align: center;
-    background-color: #007EA7;
-    padding: 1%;
+    background-color: #B94156;
+    padding: 1px;
     margin-bottom: 2%;
+    color: #DADADA;
 }
 form,
 #responseContainer {
     text-align: center;
     width: 70%;
-    margin: auto;
-    margin-bottom: 2%;
-    background-color: #F5F1ED;
+    height: 550px;
+    margin: 1%;
+    margin-bottom: 1%;
+    background-color: #F6F9FA;
     /* White background color */
     padding: 20px;
     border-radius: 10px;
     /* Rounded corners */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     /* Box shadow for a subtle lift effect */
+    font-size: 15pt;
+    font-weight: bold;
+    flex: 1;
+    overflow: auto;
 }
 
 label {
-    margin-bottom: 10px;
-    text-align: center;
+    margin-bottom: 100px;
+    /* text-align: center; */
+    /* background-color:#007EA7; */
+    margin: auto;
+    width: 90%;
+    /* border: solid; */
+    /* padding: 2%; */
 }
 
-#language {
-    display: block;
-    margin: auto;
-    margin-bottom: 10px;
-    width: 90%;
-}
 #code {
     display: block;
     margin: auto;
@@ -58,8 +66,8 @@ label {
     /* Dark gray label text color */
 }
 
-input {
-    width: 100%;
+#language, #code {
+    width: 90%;
     padding: 10px;
     border: 1px solid #ccc;
     /* Light gray border */
@@ -70,7 +78,7 @@ input {
     /* Light background color for input boxes */
 }
 
-input[type="submit"] {
+button {
     background-color: #007EA7;
     /* Green submit button */
     color: #fff;
@@ -78,9 +86,16 @@ input[type="submit"] {
     cursor: pointer;
     transition: background-color 0.3s ease;
     width: 30%;
+    border: none;
+    padding: 1%;
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 14pt;
+    font-weight: bold;
 }
 
-input[type="submit"]:hover {
+button:hover {
     background-color: #003459;
     /* Darker green on hover */
 }
