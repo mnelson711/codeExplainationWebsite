@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenAI GPT-3 Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="top-title">
+        <h1>Code Explaination using OpenAI</h1>
+    </div>
+
+    <div id="overall-container">
+        <form id="gptForm">
+            <label for="language">Language:</label>
+            <textarea type="text-area" id="language" name="language" required></textarea>
+
+            <label for="code">Copy Code:</label>
+            <textarea type="text-area" id="code" name="code" required></textarea> 
+
+            <!-- <button id="submit-button" type="submit" onclick="submitForm()"> -->
+            <button onclick="submitForm()">Submit</button>
+        </form>
+
+        <div id="responseContainer">
+            <h3>What your code means:</h3>
+        </div>
+    </div>
+
+    <script>
+        async function submitForm() {
+            const language = document.getElementById('language').value;
+            const code = document.getElementById('code').value;
+
+            const responseContainer = document.getElementById('responseContainer');
+            responseContainer.innerHTML = 'Loading...';
+
+            const response = await fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ language, code })
+            });
+
+            const responseData = await response.text();
+            responseContainer.innerHTML = responseData;
+        }
+    </script>
+
+</body>
+
+</html>

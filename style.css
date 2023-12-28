@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    background-color: #003459;
+    /* Light gray background color */
+}
+
+#center-container {
+    text-align: center;
+}
+
+#top-title {
+    text-align: center;
+    background-color: #007EA7;
+    padding: 1%;
+    margin-bottom: 2%;
+}
+form,
+#responseContainer {
+    text-align: center;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 2%;
+    background-color: #F5F1ED;
+    /* White background color */
+    padding: 20px;
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Box shadow for a subtle lift effect */
+}
+
+label {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#language {
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+    width: 90%;
+}
+#code {
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+    width: 90%;
+    height: 300px;
+}
+
+label {
+    color: #00171F;
+    /* Dark gray label text color */
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    /* Light gray border */
+    border-radius: 5px;
+    /* Rounded corners for input boxes */
+    box-sizing: border-box;
+    background-color: #f8f8f8;
+    /* Light background color for input boxes */
+}
+
+input[type="submit"] {
+    background-color: #007EA7;
+    /* Green submit button */
+    color: #fff;
+    /* White text color */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 30%;
+}
+
+input[type="submit"]:hover {
+    background-color: #003459;
+    /* Darker green on hover */
+}
