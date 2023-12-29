@@ -1,0 +1,129 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    background-color: #DADADA;
+    /* Light gray background color */
+    font-family: Tahoma, sans-serif;
+}
+
+#overall-container {
+    display: flex;
+    /* background-color: red; */
+    padding: 1%;
+}
+
+#top-title {
+    text-align: center;
+    background-color: #B94156;
+    padding: 1px;
+    /* margin-bottom: 2%; */
+    color: #DADADA;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #111;
+}
+
+form,
+#responseContainer {
+    text-align: center;
+    width: 70%;
+    height: 550px;
+    margin: 1%;
+    margin-bottom: 1%;
+    background-color: #F6F9FA;
+    /* White background color */
+    padding: 20px;
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Box shadow for a subtle lift effect */
+    font-size: 15pt;
+    font-weight: bold;
+    flex: 1;
+    overflow: auto;
+}
+
+label {
+    margin-bottom: 100px;
+    /* text-align: center; */
+    /* background-color:#007EA7; */
+    margin: auto;
+    width: 90%;
+    /* border: solid; */
+    /* padding: 2%; */
+}
+
+#code {
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+    width: 90%;
+    height: 250px;
+}
+
+label {
+    color: #00171F;
+    /* Dark gray label text color */
+}
+
+#newlanguage,
+#oldlanguage,
+#code {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    /* Light gray border */
+    border-radius: 5px;
+    /* Rounded corners for input boxes */
+    box-sizing: border-box;
+    background-color: #f8f8f8;
+    /* Light background color for input boxes */
+}
+
+button {
+    background-color: #007EA7;
+    /* Green submit button */
+    color: #fff;
+    /* White text color */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 30%;
+    border: none;
+    padding: 1%;
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #003459;
+    /* Darker green on hover */
+}
