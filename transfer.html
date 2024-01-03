@@ -10,29 +10,26 @@
 
 <body>
     <div id="top-title">
-        <h1>Code Language Switch using OpenAI</h1>
+        <h1>Language Switch</h1>
     </div>
 
     <ul>
-        <li><a href="index">Home</a></li>
+        <li><a href="home">Home</a></li>
         <li><a href="explain">Explain Code</a></li>
         <li><a href="switch">Language Switch</a></li>
     </ul>
 
     <div id="overall-container">
         <form id="gptForm">
-            <!-- <label for="language">Language:</label> -->
             <p>Current Language</p>
             <input type="text" id="oldlanguage" name="oldlanguage" required placeholder="HTML, Python, Java, C++, etc.">
 
             <p>New Language</p>
             <input type="text" id="newlanguage" name="newlanguage" required placeholder="HTML, Python, Java, C++, etc.">
 
-            <!-- <label for="code">Copy Code:</label> -->
             <p>Copy Code</p>
             <textarea type="text-area" id="code" name="code" required placeholder="print('Hello World')"></textarea>
 
-            <!-- <button id="submit-button" type="submit" onclick="submitForm()"> -->
             <button onclick="submitForm()">Submit</button>
         </form>
 
@@ -57,41 +54,7 @@
         </div>
     </div>
 
-    <script>
-        const responseContainer = document.getElementById('responseContainer');
-        // responseContainer.innerHTML = "hey there"
-        async function submitForm() {
-            const oldlanguage = document.getElementById('oldlanguage').value;
-            const newlanguage = document.getElementById('newlanguage').value;
-            const code = document.getElementById('code').value;
-
-            // responseContainer = document.getElementById('responseContainer');
-            responseContainer.innerHTML = 'Loading...';
-
-            try {
-                const response = await fetch('/switch', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ oldlanguage, newlanguage, code })
-                });
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-
-                const responseData = await response.text();
-                responseContainer.innerHTML = String(responseData);
-                // return responseData;
-            } catch (error) {
-                console.error('Error:', error.message);
-                responseContainer.innerHTML = 'Error fetching data';
-            }
-        }
-        responseContainer.innerHTML = responseData;
-    </script>
-
+    <script src="transfer.js"></script>
 </body>
 
 </html>
