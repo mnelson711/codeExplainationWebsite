@@ -1,5 +1,11 @@
 
 let responseText = "loading";
+
+function displayResult(text) {
+  const responseContainer = document.getElementById("responseContainer");
+  responseContainer.textContent = text;
+}
+
 async function submitForm() {
   const oldlanguage = document.getElementById("oldlanguage").value;
   const newlanguage = document.getElementById("newlanguage").value;
@@ -10,7 +16,7 @@ async function submitForm() {
   }
 
   // responseContainer = document.getElementById('responseContainer');
-  responseContainer.innerHTML = "Loading...";
+  displayResult("Loading...");
 
   try {
     const response = await fetch("/switch", {
@@ -18,21 +24,21 @@ async function submitForm() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ oldlanguage, newlanguage, code }),
+      body: JSON.stringify({ oldlanguage: oldlanguage, newlanguage: newlanguage, code: code }),
     });
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
-    const responseData = await response.json();
-    const responseContainer = document.getElementById("responseContainer");
-    responseContainer.innerHTML = responseData;
-    responseText = responseData;
+    const responseData = await response.text();
+    // const responseContainer = document.getElementById("responseContainer");
+    displayResult(responseData);
+    // responseText = responseData;
     // return responseData;
   } catch (error) {
     console.error("Error:", error.message);
-    responseContainer.textContent = "Error fetching data";
+    displayResult("Error fetching data");
   }
 }
 // let responseText = "loading";

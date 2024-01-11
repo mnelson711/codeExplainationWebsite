@@ -20,7 +20,7 @@
     </ul>
 
     <div id="overall-container">
-        <form id="gptForm">
+        <div id="form" action="">
 
             <p>Language</p>
             <input type="text" id="language" name="language" required placeholder="HTML, Python, Java, C++, etc.">
@@ -30,23 +30,29 @@
             <textarea type="text-area" id="code" name="code" required placeholder="print('Hello World')"></textarea> 
 
             <button onclick="submitForm()">Submit</button>
-        </form>
+        </div>
 
         <div id="responseContainer">
-            <h1>Code Explaination Below:</h1>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum repudiandae provident voluptatibus expedita voluptas distinctio harum vero atque eius, possimus nesciunt pariatur aliquam voluptate dolores excepturi voluptatum! Minima facilis, eveniet dolorum placeat dolor explicabo aperiam iure! Magni, fugit quam vel facilis corrupti accusantium atque ut nisi possimus laborum nulla odit ipsum tempora praesentium, ab totam minus sequi magnam neque quasi illum corporis at nostrum blanditiis. Natus deleniti ratione corrupti voluptate assumenda minima necessitatibus, consequatur dolorem! Quos quia vitae et reprehenderit nihil deleniti, optio laboriosam animi nam nisi nobis mollitia inventore commodi illo ut odio beatae, sed praesentium est aut quam fugit modi. Alias tempore doloremque cupiditate ratione expedita a architecto nisi voluptas, laborum, pariatur officia molestias neque nihil sit voluptatum optio in provident nemo? Et, expedita doloremque ab culpa aut amet tenetur atque voluptatem placeat corrupti voluptates obcaecati repellendus quaerat sed, asperiores delectus earum dicta harum neque eaque quisquam, consequuntur similique fugit! Facere, nemo doloribus? Quisquam inventore similique repellat voluptatibus non officia praesentium cumque minima, repudiandae libero facere? Dignissimos aspernatur suscipit sint aut possimus tempora iure magni non eos necessitatibus temporibus mollitia ratione, alias placeat voluptate. Aut nobis corporis modi sit quidem ipsum quia dolorem natus sequi? Recusandae, quas. Repudiandae!</p>
+            <!-- <h1>Code Explaination Below:</h1>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum repudiandae provident voluptatibus expedita voluptas distinctio harum vero atque eius, possimus nesciunt pariatur aliquam voluptate dolores excepturi voluptatum! Minima facilis, eveniet dolorum placeat dolor explicabo aperiam iure! Magni, fugit quam vel facilis corrupti accusantium atque ut nisi possimus laborum nulla odit ipsum tempora praesentium, ab totam minus sequi magnam neque quasi illum corporis at nostrum blanditiis. Natus deleniti ratione corrupti voluptate assumenda minima necessitatibus, consequatur dolorem! Quos quia vitae et reprehenderit nihil deleniti, optio laboriosam animi nam nisi nobis mollitia inventore commodi illo ut odio beatae, sed praesentium est aut quam fugit modi. Alias tempore doloremque cupiditate ratione expedita a architecto nisi voluptas, laborum, pariatur officia molestias neque nihil sit voluptatum optio in provident nemo? Et, expedita doloremque ab culpa aut amet tenetur atque voluptatem placeat corrupti voluptates obcaecati repellendus quaerat sed, asperiores delectus earum dicta harum neque eaque quisquam, consequuntur similique fugit! Facere, nemo doloribus? Quisquam inventore similique repellat voluptatibus non officia praesentium cumque minima, repudiandae libero facere? Dignissimos aspernatur suscipit sint aut possimus tempora iure magni non eos necessitatibus temporibus mollitia ratione, alias placeat voluptate. Aut nobis corporis modi sit quidem ipsum quia dolorem natus sequi? Recusandae, quas. Repudiandae!</p> -->
         </div>
     </div>
 
 <script>
-    const responseContainer = document.getElementById('responseContainer');
+
+    function displayResult(text) {
+        const responseContainer = document.getElementById('responseContainer');
+        responseContainer.textContent = text;
+    }
 
     async function submitForm() {
         const input1 = document.getElementById('language').value;
         const input2 = document.getElementById('code').value;
+        console.log(input2);
+        let responseData = "Loading...";
 
         console.log(input1);
-        responseContainer.innerHTML = 'Loading...';
+        displayResult('Loading...');
 
         try {
             const response = await fetch('/submit', {
@@ -54,28 +60,24 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ input1, input2 })
+                body: JSON.stringify({ language: input1, code: input2 })
             });
 
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
 
-            const responseData = await response.text();
+            responseData = await response.text();
             console.log("recieved response from server");
-            responseContainer.innerHTML = responseData;
-
-            // p = document.createElement("p");
-            // p.innerHTML = responseData;
-            // responseContainer.appendChild(p);
-
-            // return responseData;
+            displayResult(responseData);
         } catch (error) {
             console.error('Error:', error.message);
-            responseContainer.innerHTML = 'Error fetching data';
+            displayResult('Error fetching data');
         }
-    }
-    responseContainer.innerHTML = responseData;
+        displayResult(responseData);
+    }//end function
+
+    // responseContainer.innerHTML = responseData;
 </script>
 
 </body>

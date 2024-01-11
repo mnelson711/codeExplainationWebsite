@@ -20,7 +20,7 @@
     </ul>
 
     <div id="overall-container">
-        <form id="gptForm">
+        <div id="form">
             <p>Current Language</p>
             <input type="text" id="oldlanguage" name="oldlanguage" required placeholder="HTML, Python, Java, C++, etc.">
 
@@ -31,7 +31,7 @@
             <textarea type="text-area" id="code" name="code" required placeholder="print('Hello World')"></textarea>
 
             <button onclick="submitForm()">Submit</button>
-        </form>
+        </div>
 
         <div id="responseContainer">
             <h1>Code Explaination Below:</h1>

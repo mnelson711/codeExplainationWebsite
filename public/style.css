@@ -49,7 +49,7 @@ li a:hover {
     background-color: #111;
 }
 
-form,
+#form,
 #responseContainer {
     text-align: center;
     width: 70%;

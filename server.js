@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //PRIVATE KEY
-API_KEY = "";
+API_KEY = "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";
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/home.html");
 });
@@ -33,6 +33,7 @@ app.get("/explain", (req, res) => {
 
 app.post("/submit", async (req, res) => {
   const { language, code } = req.body;
+  console.log(language,code);
 
   try {
     const openai = new OpenAI({
@@ -78,9 +79,9 @@ app.post("/switch", async (req, res) => {
     });
 
     const responseText = openaiResponse.choices[0].message.content;
-    const responseSend = JSON.stringify({ responseText });
-    console.log("response: ", responseText);
-    res.send(responseSend);
+    // const responseSend = JSON.stringify({ responseText });
+    // console.log("response: ", responseText);
+    res.send(responseText);
   } catch (error) {
     console.error("Error calling OpenAI API:", error.message);
     res.status(500).send("Error calling OpenAI API");
