@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const OpenAI = require("openai");
 const path = require("path");
+const fs = require("fs");
 
 const app = express();
 const port = 3000;
@@ -14,7 +15,16 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //PRIVATE KEY
-API_KEY = "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";
+let API_KEY;
+fs.readFile("/etc/secrets/APIkey", 'utf8', (err, data) => {
+  if (err) {
+    console.error('Error reading API key file:', err);
+    return;
+  }
+
+  API_KEY = data.trim();
+});
+
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/home.html");
 });
