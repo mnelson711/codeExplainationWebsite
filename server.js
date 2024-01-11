@@ -15,15 +15,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //PRIVATE KEY
-let API_KEY;
-fs.readFile("/etc/secrets/APIkey", 'utf8', (err, data) => {
-  if (err) {
-    console.error('Error reading API key file:', err);
-    return;
-  }
-
-  API_KEY = data.trim();
-});
+const API_KEY = process.env.API_KEY;
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/home.html");
